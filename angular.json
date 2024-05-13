@@ -73,11 +73,7 @@
               "buildTarget": "meal-planner-app:build:development"
             }
           },
-          "defaultConfiguration": "development",
-          "options": {
-            "host": "localhost",
-            "port": 5000
-          }
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
