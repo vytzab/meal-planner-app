@@ -25,11 +25,11 @@ export class IngredientService {
     return this.http.post<void>(this.apiUrl + "/addIngredient", ingredient)
   }
 
-  deleteIngredient(id: number): Observable<void> {
-    return this.http.delete<void>(this.apiUrl + "/deleteIngredient/" + id)
-  }
-
   updateIngredient(updatedIngredient: Ingredient): Observable<void> {
     return this.http.put<void>(this.apiUrl + "/updateIngredient", updatedIngredient)
+  }
+
+  deleteIngredient(id: number): Observable<void> {
+    return this.http.delete<void>(this.apiUrl + "/deleteIngredient/" + id)
   }
 }
