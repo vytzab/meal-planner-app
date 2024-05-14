@@ -1,1 +1,37 @@
-<p>recipe works!</p>
+<ng-container *ngIf="recipeItem">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="assets/img/{{recipeItem.image}}.jpg" class="img-fluid" alt={{recipeItem.name}} />
+            </div>
+            <div class="col-lg-6">
+                <h2 class="fw-bold">{{recipeItem.name}}</h2>
+                <h3 class="my-4 mb-4">Nutritional value per 100 g</h3>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Protein</th>
+                        <th scope="col">Carbs</th>
+                        <th scope="col">Fat</th>
+                        <th scope="col">kCal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{recipeItem.protein}}</td>
+                        <td>{{recipeItem.carbs}}</td>
+                        <td>{{recipeItem.fat}}</td>
+                        <td>{{recipeItem.kcal}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                <div>
+                    <button class="btn btn-outline-success btn-sm me-2" type="button">Start new recipe</button>
+                    <button class="btn btn-outline-warning btn-sm me-2" type="button">Edit</button>
+                    <button class="btn btn-outline-danger btn-sm" type="button">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
