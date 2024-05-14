@@ -5,4 +5,5 @@ export interface Ingredient {
     carbs: number,
     fat: number,
     kcal: number
+    image: string
 }

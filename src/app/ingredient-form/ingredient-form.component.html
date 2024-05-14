@@ -1,1 +1,56 @@
-<p>ingredient-form works!</p>
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+    <form [formGroup]="ingredientForm" (ngSubmit)="onSubmit()">
+
+        <div class="row mb-3">
+            <h3 class="mt-5 mb-3">Create a new ingredient</h3>
+            <div class="col">
+                <label class="form-label">Name:</label>
+                <input class="form-control" type="text" formControlName="name">
+                <small class="text-danger"
+                    *ngIf="ingredientForm.get('name')?.invalid && ingredientForm.get('name')?.touched">
+                    Name is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Protein:</label>
+                <input class="form-control" type="number" formControlName="protein">
+                <small class="text-danger"
+                    *ngIf="ingredientForm.get('protein')?.invalid && ingredientForm.get('protein')?.touched">
+                    Protein is required.
+                </small>
+            </div>
+            <div class="col">
+                <label class="form-label">Carbs:</label>
+                <input class="form-control" type="number" formControlName="carbs">
+                <small class="text-danger"
+                    *ngIf="ingredientForm.get('carbs')?.invalid && ingredientForm.get('carbs')?.touched">
+                    Carbs is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Fat:</label>
+                <input class="form-control" type="number" formControlName="fat">
+                <small class="text-danger"
+                    *ngIf="ingredientForm.get('fat')?.invalid && ingredientForm.get('fat')?.touched">
+                    Fat is required.
+                </small>
+            </div>
+            <div class="col">
+                <label class="form-label">Kcal:</label>
+                <input class="form-control" type="number" formControlName="kcal">
+                <small class="text-danger"
+                    *ngIf="ingredientForm.get('kcal')?.invalid && ingredientForm.get('kcal')?.touched">
+                    Kcal is required.
+                </small>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="ingredientForm.invalid">Submit</button>
+    </form>
+</div>
