@@ -21,3 +21,16 @@ body {
     max-width: 800px;
     margin: auto;
 }
+
+.ingredient-card {
+    max-width: 200px;
+}
+
+mat-card:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+mat-card {
+    transition: transform .2s;
+}
