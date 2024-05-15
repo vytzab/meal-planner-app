@@ -1,1 +1,89 @@
-<p>recipe-form works!</p>
+<div class="container">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-6">
+                <label class="form-label">Name:</label>
+                <input class="form-control" type="text" formControlName="name">
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-3">
+                <label class="form-label">All ingredients:</label>
+                <select class="form-select" formControlName="allIngredients" id="allIngredients">
+                    <option *ngFor="let ingredient of allIngredients; let i = index" [value]="allIngredients[i].id">
+                        {{allIngredients[i].name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Amount:</label>
+                <input class="form-control" type="number" formControlName="amount">
+            </div>
+            <div class="col-auto">
+                <label class="form-label">&nbsp;</label>
+                <button class="form-control btn btn-success btn-sm" (click)="addIngredientToRecipe()">Add</button>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-3">
+                <label class="form-label">Recipe ingredients:</label>
+                <div class="input-group">
+                    <select class="form-select" multiple aria-label="multiple select example"
+                        formControlName="recipeIngredients" id="recipeIngredients">
+                        <option *ngFor="let ingredient of recipeIngredients; let i = index"
+                            [value]="ingredient.ingredientId">
+                            {{ getIngredientName(+ingredient.ingredientId) }}
+                        </option>
+                    </select>
+                    <button class="btn btn-outline-danger" (click)="removeSelectedIngredients()">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label class="form-label">Preparation time:</label>
+                <input class="form-control" type="number" formControlName="preparationTime">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Cooking time:</label>
+                <input class="form-control" type="number" formControlName="cookingTime">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Total time:</label>
+                <input class="form-control" type="number" formControlName="totalTime">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Servings:</label>
+                <input class="form-control" type="number" formControlName="servings">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">DifficultyLevel:</label>
+                <select class="form-select" formControlName="difficultyLevel">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label class="form-label">Instructions:</label>
+                <textarea class="form-control" rows="5" type="text" formControlName="instructions"></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label class="form-label">Description:</label>
+                <textarea class="form-control" rows="5" type="text" formControlName="description"></textarea>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="recipeForm.invalid">Submit</button>
+    </form>
+</div>
