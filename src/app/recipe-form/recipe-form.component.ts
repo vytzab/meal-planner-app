@@ -75,24 +75,37 @@ export class RecipeFormComponent implements OnInit {
   }
 
   onSubmit() {
+    // console.log(this.recipeForm.value)
+    if (this.recipeForm.valid) {
+      this.recipeItem = {
+        name: this.recipeForm.value.name,
+        description: this.recipeForm.value.description,
+        ingredients: this.recipeIngredients, 
+        preparationTime: this.recipeForm.value.preparationTime,
+        cookingTime: this.recipeForm.value.cookingTime,
+        totalTime: this.recipeForm.value.totalTime,
+        instructions: this.recipeForm.value.instructions,
+        servings: this.recipeForm.value.servings,
+        difficultyLevel: this.recipeForm.value.difficultyLevel,
+        image: this.recipeForm.value.image
+      };
+      const recipeJson = JSON.stringify(this.recipeItem);
+      console.log(recipeJson);
+      console.log(this.recipeItem);
+    }
 
-    // if (this.recipeForm.valid) {
-    // let recipe: Recipe = this.recipeForm.value;
-    // console.log(recipe);
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    // let id = this.activatedRoute.snapshot.paramMap.get('id');
-
-    // if (id) {
-    //   this.recipeService.updateRecipe(recipe).subscribe(() => {
-    //     console.log("Recipe updated.")
-    //   });
-    // } else {
-    //   this.recipeService.addRecipe(recipe).subscribe(() => {
-    //     console.log("Recipe created.")
-    //   });
-    // }
-    // this.router.navigate(['/recipe/list']);
-    // }
+    if (id) {
+      this.recipeService.updateRecipe(this.recipeItem).subscribe(() => {
+        console.log("Recipe updated.")
+      });
+    } else {
+      this.recipeService.addRecipe(this.recipeItem).subscribe(() => {
+        console.log("Recipe created.")
+      });
+    }
+    this.router.navigate(['/recipe/list']);
   }
 
   getIngredientName(id: number): string | undefined {
@@ -101,12 +114,19 @@ export class RecipeFormComponent implements OnInit {
   }
 
   addIngredientToRecipe() {
-    const newRecipeIngredient: RecipeIngredient = {
-      ingredientId: this.recipeForm.value.allIngredients,
-      amount: this.recipeForm.value.amount
-    };
+    const newIngredientId = this.recipeForm.value.allIngredients;
+    const newAmount = this.recipeForm.value.amount;
+    if (this.checkIngredientExists(newIngredientId)) {
+      const existingIngredientIndex = this.recipeIngredients.findIndex(ingredient => ingredient.ingredientId === newIngredientId);
+      this.recipeIngredients[existingIngredientIndex].amount += newAmount;
+    } else {
+      const newRecipeIngredient: RecipeIngredient = {
+        ingredientId: this.recipeForm.value.allIngredients,
+        amount: this.recipeForm.value.amount
+      };
 
-    this.recipeIngredients.push(newRecipeIngredient);
+      this.recipeIngredients.push(newRecipeIngredient);
+    }
   }
 
   removeSelectedIngredients() {
@@ -115,5 +135,9 @@ export class RecipeFormComponent implements OnInit {
     this.recipeIngredients = this.recipeIngredients.filter(ingredient => !selectedIds.includes(ingredient.ingredientId));
 
     this.recipeForm.get('recipeIngredients')?.patchValue([]);
+  }
+
+  checkIngredientExists(ingredientId: number): boolean {
+    return this.recipeIngredients.some(ingredient => ingredient.ingredientId === ingredientId);
   }
 }

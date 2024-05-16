@@ -1,7 +1,7 @@
 import { RecipeIngredient } from "./recipe-ingredient";
 
 export interface Recipe {
-    id: number,
+    id?: number,
     name: string,
     description: string,
     ingredients : RecipeIngredient[];
@@ -12,8 +12,8 @@ export interface Recipe {
     servings: number,
     difficultyLevel: string,
     image: string,
-    totalProtein: number,
-    totalCarbs: number,
-    totalFat: number,
-    totalKcal: number,
+    totalProtein?: number,
+    totalCarbs?: number,
+    totalFat?: number,
+    totalKcal?: number,
 }

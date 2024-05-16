@@ -23,19 +23,19 @@
             </div>
             <div class="col-auto">
                 <label class="form-label">&nbsp;</label>
-                <button class="form-control btn btn-success btn-sm" (click)="addIngredientToRecipe()">Add</button>
+                <button class="form-control btn btn-success btn-sm" type="button" (click)="addIngredientToRecipe()">Add</button>
             </div>
         </div>
 
         <div class="row justify-content-md-center">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label class="form-label">Recipe ingredients:</label>
                 <div class="input-group">
                     <select class="form-select" multiple aria-label="multiple select example"
                         formControlName="recipeIngredients" id="recipeIngredients">
                         <option *ngFor="let ingredient of recipeIngredients; let i = index"
                             [value]="ingredient.ingredientId">
-                            {{ getIngredientName(+ingredient.ingredientId) }}
+                            {{ getIngredientName(+ingredient.ingredientId) }} - {{ ingredient.amount }} g
                         </option>
                     </select>
                     <button class="btn btn-outline-danger" (click)="removeSelectedIngredients()">Remove</button>

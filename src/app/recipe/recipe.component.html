@@ -6,23 +6,56 @@
             </div>
             <div class="col-lg-6">
                 <h2 class="fw-bold">{{ recipeItem.name }}</h2>
-                <h3 class="my-4 mb-4">Nutritional value per 100 g</h3>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let ingredient of recipeItem.ingredients">
-                            <td>{{ getIngredientName(ingredient.ingredientId) }}</td>
-                            <td>{{ ingredient.amount }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h4 class="fw-bold">Difficulty level {{ recipeItem.difficultyLevel }}</h4>
+                <h3 class="my-4 mb-4">{{ recipeItem.description }}</h3>
                 <div>
-                    <button class="btn btn-outline-success btn-sm me-2" type="button">Start new recipe</button>
+                    <h4 class="fw-bold">Ingredients</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ingredient of recipeItem.ingredients">
+                                <td>{{ getIngredientName(ingredient.ingredientId) }}</td>
+                                <td>{{ ingredient.amount }}</td>
+                            </tr>
+                            <tr>
+                                <td>Servings</td>
+                                <td>{{ recipeItem.servings }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h4 class="fw-bold">Nutritional value per serving</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Protein</th>
+                                <th scope="col">Carbs</th>
+                                <th scope="col">Fat</th>
+                                <th scope="col">kCal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="recipeItem">
+                                <td>{{ recipeItem.totalProtein / recipeItem.servings | number:'1.1-1'}}</td>
+                                <td>{{ recipeItem.totalCarbs / recipeItem.servings | number:'1.1-1'}}</td>
+                                <td>{{ recipeItem.totalFat / recipeItem.servings | number:'1.1-1'}}</td>
+                                <td>{{ recipeItem.totalKcal / recipeItem.servings | number:'1.1-1'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-auto">
+                    <h4 class="fw-bold">Instructions</h4>
+                    <p> {{ recipeItem.instructions }} </p>
+                </div>
+                <div>
+                    <button class="btn btn-outline-success btn-sm me-2" type="button">Start new week plan</button>
                     <button class="btn btn-outline-warning btn-sm me-2" type="button">Edit</button>
                     <button class="btn btn-outline-danger btn-sm" type="button">Delete</button>
                 </div>

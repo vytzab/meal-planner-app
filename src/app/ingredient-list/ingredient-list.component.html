@@ -3,8 +3,8 @@
     <button class="btn btn-primary mx-6" [routerLink]="['../../ingredient/new']">Create a new ingredient</button>
     <div class="product-grid my-3" fxLayout="row wrap" fxLayoutGap="50px grid">
         <div *ngFor="let ingredient of ingredients">
-            <mat-card class="ingredient-card" [routerLink]="['../../ingredient/view', ingredient.id]">
-                <img mat-card-image src="assets/img/{{ingredient.image}}.jpg" alt={{ingredient.name}}>
+            <mat-card class="ingredient-card">
+                <img mat-card-image src="assets/img/{{ingredient.image}}.jpg" alt={{ingredient.name}} [routerLink]="['../../ingredient/view', ingredient.id]">
                 <mat-card-content>
                     <mat-card-title>{{ingredient.name}}</mat-card-title>
                     <mat-card-subtitle>{{ingredient.kcal}}</mat-card-subtitle>
