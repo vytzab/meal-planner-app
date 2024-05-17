@@ -9,27 +9,29 @@
         </div>
 
         <div class="row justify-content-md-center">
-            <div class="col-md-3">
-                <label class="form-label">All ingredients:</label>
-                <select class="form-select" formControlName="allIngredients" id="allIngredients">
-                    <option *ngFor="let ingredient of allIngredients; let i = index" [value]="allIngredients[i].id">
-                        {{allIngredients[i].name}}
+            <div class="column col-md-3">
+                <select class="option-select form-select" multiple aria-label="multiple select example"
+                    formControlName="allIngredients" id="allIngredients">
+                    <option *ngFor="let ingredient of filteredIngredients; let i = index"
+                        [value]="ingredients[i].id">
+                        {{ingredients[i].name}}
                     </option>
                 </select>
             </div>
-            <div class="col-md-2">
+            <div class="column col-md-3">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Search">
+                </mat-form-field>
                 <label class="form-label">Amount:</label>
                 <input class="form-control" type="number" formControlName="amount">
             </div>
-            <div class="col-auto">
-                <label class="form-label">&nbsp;</label>
-                <button class="form-control btn btn-success btn-sm" type="button" (click)="addIngredientToRecipe()">Add</button>
+            <div class="column col-md-2">
+                <button class="form-control btn btn-outline-success btn-sm add-button" type="button" (click)="addIngredientToRecipe()">Add</button>
             </div>
         </div>
 
         <div class="row justify-content-md-center">
             <div class="col-md-4">
-                <label class="form-label">Recipe ingredients:</label>
                 <div class="input-group">
                     <select class="form-select" multiple aria-label="multiple select example"
                         formControlName="recipeIngredients" id="recipeIngredients">

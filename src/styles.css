@@ -46,3 +46,7 @@ mat-card {
 .sort-dropdown {
     margin-left: 20px;
 }
+
+.row {
+    padding-bottom: 30px;
+}

@@ -18,7 +18,8 @@ export class RecipeFormComponent implements OnInit {
 
   id: string = ''
   recipeItem!: Recipe
-  allIngredients: Ingredient[] = [];
+  ingredients: Ingredient[] = [];
+  filteredIngredients: Ingredient[] = [];
   recipeIngredients: RecipeIngredient[] = [];
   recipeIngredient!: RecipeIngredient
   selectedId: number = 0
@@ -33,8 +34,8 @@ export class RecipeFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.ingredientService.getIngredients().subscribe(ingredients => {
-      this.allIngredients = ingredients
-      console.log(this.allIngredients)
+      this.ingredients = ingredients
+      this.filteredIngredients = ingredients;
     });
 
     this.recipeForm = this.formBuilder.group({
@@ -109,7 +110,7 @@ export class RecipeFormComponent implements OnInit {
   }
 
   getIngredientName(id: number): string | undefined {
-    const ingredient = this.allIngredients.find(ingredient => ingredient.id === id);
+    const ingredient = this.ingredients.find(ingredient => ingredient.id === id);
     return ingredient?.name;
   }
 
@@ -139,5 +140,14 @@ export class RecipeFormComponent implements OnInit {
 
   checkIngredientExists(ingredientId: number): boolean {
     return this.recipeIngredients.some(ingredient => ingredient.ingredientId === ingredientId);
+  }
+
+  applyFilter(event: Event): void {
+    let searchTerm = (event.target as HTMLInputElement).value;
+    searchTerm = searchTerm.toLowerCase();
+
+    this.filteredIngredients = this.ingredients.filter(ingredient => 
+      ingredient.name.toLowerCase().includes(searchTerm)
+    )
   }
 }

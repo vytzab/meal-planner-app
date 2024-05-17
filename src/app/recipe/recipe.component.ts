@@ -4,8 +4,6 @@ import { RecipeService } from './recipe.service';
 import { ActivatedRoute } from '@angular/router';
 import { IngredientService } from '../ingredient/ingredient.service';
 import { Ingredient } from '../models/ingredient';
-import { Observable, of, map, catchError } from 'rxjs';
-import { RecipeIngredient } from '../models/recipe-ingredient';
 
 @Component({
   selector: 'app-recipe',
