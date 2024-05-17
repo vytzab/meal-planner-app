@@ -22,6 +22,14 @@ body {
     margin: auto;
 }
 
+.text-center{
+    text-align: center;
+}
+
+.text-right{
+    text-align: right;
+}
+
 .ingredient-card {
     max-width: 200px;
 }
@@ -33,4 +41,8 @@ mat-card:hover {
 
 mat-card {
     transition: transform .2s;
+}
+
+.sort-dropdown {
+    margin-left: 20px;
 }

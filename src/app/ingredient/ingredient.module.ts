@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card'
 import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     MatCardModule,
     FlexModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatInputModule,
+    MatSelectModule
   ],
   exports: [
     IngredientComponent

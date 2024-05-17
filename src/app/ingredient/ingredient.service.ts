@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class IngredientService {
-  private apiUrl = "http://localhost:9097/ingredient"
+  private apiUrl = "http://192.168.1.167:9097/ingredient"
 
   constructor(
     private http: HttpClient

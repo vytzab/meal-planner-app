@@ -1,8 +1,20 @@
 <div class="container">
     <h2>Recipes collection</h2>
+
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search">
+    </mat-form-field>
+
+    <mat-form-field class="sort-dropdown">
+        <mat-select (selectionChange)="sortRecipes($event.value)" placeholder="Sort">
+            <mat-option value="kcalLowHigh">kCal Low to High</mat-option>
+            <mat-option value="kcalHighLow">kCal High to Low</mat-option>
+        </mat-select>
+    </mat-form-field>
+
     <button class="btn btn-primary mx-6" [routerLink]="['../../recipe/new']">Create a new recipe</button>
     <div class="product-grid my-3" fxLayout="row wrap" fxLayoutGap="50px grid">
-        <div *ngFor="let recipe of recipes">
+        <div *ngFor="let recipe of filteredRecipes">
             <mat-card class="ingredient-card">
                 <img mat-card-image src="assets/img/{{recipe.image}}.jpg" alt={{recipe.name}} [routerLink]="['../../recipe/view', recipe.id]">
                 <mat-card-content>
@@ -11,7 +23,7 @@
                 </mat-card-content>
                 <mat-card-actions>
                   <button mat-button class="btn btn-warning mx-1" [routerLink]="['../../ingredient/edit', recipe.id]">Edit</button>
-                  <button mat-button class="btn btn-danger" (click)="deleteIngredient(recipe.id)">Delete</button>
+                  <button mat-button class="btn btn-danger" (click)="deleteRecipe(recipe.id)">Delete</button>
                 </mat-card-actions>
               </mat-card>
         </div>
