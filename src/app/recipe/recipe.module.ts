@@ -6,6 +6,7 @@ import { RecipeFormComponent } from '../recipe-form/recipe-form.component';
 import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -27,7 +28,8 @@ import { MatSelectModule } from '@angular/material/select';
     FlexModule,
     FlexLayoutModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule
   ],
   exports: [
     RecipeComponent

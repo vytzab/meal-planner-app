@@ -12,6 +12,7 @@ import { Ingredient } from '../models/ingredient';
 })
 export class IngredientFormComponent implements OnInit {
   ingredientForm: FormGroup = new FormGroup({});
+  ingredient: Ingredient | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,6 +28,7 @@ export class IngredientFormComponent implements OnInit {
       carbs: ['', Validators.required],
       fat: ['', Validators.required],
       kcal: ['', Validators.required],
+      image: [''],
     })
 
     let id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -35,6 +37,7 @@ export class IngredientFormComponent implements OnInit {
       this.ingredientService.getIngredient(parseInt(id))?.subscribe(ingredient => {
         if (ingredient)
           this.ingredientForm.patchValue(ingredient);
+          this.ingredient = ingredient;
       })
     }
   }

@@ -10,7 +10,6 @@ import { Ingredient } from '../models/ingredient';
 })
 export class IngredientComponent implements OnInit {
   public id: string = ''
-
   public ingredientItem!: Ingredient
 
   constructor(

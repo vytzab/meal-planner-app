@@ -1,0 +1,67 @@
+.day-column {
+    margin-bottom: 20px;
+}
+
+.meal-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+.meal-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.day-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.button-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.green-button,
+.btn-danger {
+  padding: 8px;
+  font-size: 15px;
+}
+
+@media (min-width: 800px) {
+    .day-column {
+        width: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    .day-column {
+        width: calc(100% / 2);
+    }
+}
+
+@media (max-width: 400px) {
+    .day-column {
+        width: 100%;
+    }
+
+    .green-button,
+    .btn-danger {
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    .button-group {
+        justify-content: center;
+        gap: 10px;
+    }
+}

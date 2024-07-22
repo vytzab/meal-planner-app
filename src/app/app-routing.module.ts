@@ -7,6 +7,9 @@ import { IngredientFormComponent } from './ingredient-form/ingredient-form.compo
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { WeekplanComponent } from './weekplan/weekplan.component';
+import { WeekplanFormComponent } from './weekplan-form/weekplan-form.component';
+import { WeekplanListComponent } from './weekplan-list/weekplan-list.component';
 
 const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -15,8 +18,13 @@ const routes: Routes = [
   {path:"ingredient/new", component: IngredientFormComponent},
   {path:"ingredient/list", component: IngredientListComponent},
   {path:"recipe/view/:id", component: RecipeComponent},
+  {path:"recipe/edit/:id", component: RecipeFormComponent},
   {path:"recipe/new", component: RecipeFormComponent},
   {path:"recipe/list", component: RecipeListComponent},
+  {path:"weekplan/view/:id", component: WeekplanComponent},
+  {path:"weekplan/edit/:id", component: WeekplanFormComponent},
+  {path:"weekplan/new", component: WeekplanFormComponent},
+  {path:"weekplan/list", component: WeekplanListComponent},
 ];
 
 @NgModule({

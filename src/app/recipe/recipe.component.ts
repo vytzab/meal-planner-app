@@ -41,4 +41,11 @@ export class RecipeComponent implements OnInit {
     const ingredient = this.ingredients.find(ingredient => ingredient.id === id);
     return ingredient?.name;
   }
+
+  getRandomRecipe(isBreakfast: boolean, isLunch: boolean, isDinner: boolean): void {
+    this.recipeService.getRandomRecipe(isBreakfast, isLunch, isDinner)
+      .subscribe(recipe => {
+        this.recipeItem = recipe;
+      });
+  }
 }

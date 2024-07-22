@@ -32,4 +32,29 @@ export class RecipeService {
   deleteRecipe(id: number): Observable<void> {
     return this.http.delete<void>(this.apiUrl + "/deleteRecipe/" + id)
   }
+
+  getRecipesByMealType(isBreakfast: boolean, isLunch: boolean, isDinner: boolean): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${this.apiUrl}/getRecipesByMealType`, {
+      params: {
+        isBreakfast: isBreakfast.toString(),
+        isLunch: isLunch.toString(),
+        isDinner: isDinner.toString()
+      }
+    });
+  }
+
+  getRandomRecipe(isBreakfast: boolean, isLunch: boolean, isDinner: boolean): Observable<Recipe> {
+    return new Observable<Recipe>(observer => {
+      this.getRecipesByMealType(isBreakfast, isLunch, isDinner).subscribe(recipes => {
+        if (recipes.length > 0) {
+          const randomIndex = Math.floor(Math.random() * recipes.length);
+          observer.next(recipes[randomIndex]);
+          observer.complete();
+        } else {
+          observer.next(null); // Handle if no recipes found
+          observer.complete();
+        }
+      });
+    });
+  }
 }

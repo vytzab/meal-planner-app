@@ -1,8 +1,16 @@
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <form [formGroup]="ingredientForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+            <div *ngIf="ingredient">
+                <img src="assets/img/{{ingredient.image}}.jpg" class="img-fluid" alt={{ingredient.name}} />
+                <h3 class="mt-5 mb-3">Update the ingredient</h3>
+            </div>
+            <div *ngIf="!ingredient">
+                <h3 class="mt-5 mb-3">Create a new ingredient</h3>
+            </div>
+        </div>
 
         <div class="row mb-3">
-            <h3 class="mt-5 mb-3">Create a new ingredient</h3>
             <div class="col">
                 <label class="form-label">Name:</label>
                 <input class="form-control" type="text" formControlName="name">
@@ -12,7 +20,6 @@
                 </small>
             </div>
         </div>
-
         <div class="row mb-3">
             <div class="col">
                 <label class="form-label">Protein:</label>
@@ -31,7 +38,6 @@
                 </small>
             </div>
         </div>
-
         <div class="row mb-3">
             <div class="col">
                 <label class="form-label">Fat:</label>
@@ -50,7 +56,6 @@
                 </small>
             </div>
         </div>
-
         <button class="btn btn-primary" type="submit" [disabled]="ingredientForm.invalid">Submit</button>
     </form>
 </div>

@@ -1,4 +1,4 @@
 export interface RecipeIngredient {
-    ingredientId: number,
-    amount: number;
+    ingredientId: number
+    amount: number
 }

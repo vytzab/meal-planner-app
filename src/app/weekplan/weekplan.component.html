@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row justify-content-center mb-3">
+        <button mat-raised-button class="btn btn-primary" (click)="randomizeAllMeals()">Randomize All Meals</button>
+    </div>
+    <div class="d-lg-flex justify-content-center">
+        <div class="row text-center justify-content-center">
+            <!-- Loop through each day -->
+            <ng-container *ngFor="let day of [1, 2, 3, 4, 5, 6, 7]">
+                <div class="day-column">
+                    <h4 class="day-name">{{ getDayName(day) }}</h4>
+                    <!-- Loop through each meal type -->
+                    <div *ngFor="let type of [1, 2, 3]" class="meal">
+                        <mat-card *ngIf="getSpecificMeal(day, type)" class="meal-card">
+                            <img mat-card-image src="assets/img/{{ getSpecificMeal(day, type).image }}.jpg"
+                                alt="{{ getSpecificMeal(day, type)?.name }}" />
+                            <mat-card-content>
+                                <mat-card-title>{{ getMealTypeName(type) }}</mat-card-title>
+                                <mat-card-subtitle>{{ getSpecificMeal(day, type)?.name }}</mat-card-subtitle>
+                            </mat-card-content>
+                            <mat-card-actions class="card-actions">
+                                <div class="button-group">
+                                    <button mat-raised-button class="green-button" (click)="randomizeRecipe(day, type)">Randomize</button>
+                                    <button mat-button class="btn btn-danger ml-auto">Delete</button>
+                                </div>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- Placeholder for Shopping List -->
+            <div>
+                <strong>Shopping List</strong>
+                <!-- Placeholder for Shopping List content -->
+            </div>
+        </div>
+    </div>
+</div>
