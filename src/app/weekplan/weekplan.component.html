@@ -7,7 +7,7 @@
             <!-- Loop through each day -->
             <ng-container *ngFor="let day of [1, 2, 3, 4, 5, 6, 7]">
                 <div class="day-column">
-                    <h4 class="day-name">{{ getDayName(day) }}</h4>
+                    <h4 class="column-name">{{ getDayName(day) }}</h4>
                     <!-- Loop through each meal type -->
                     <div *ngFor="let type of [1, 2, 3]" class="meal">
                         <mat-card *ngIf="getSpecificMeal(day, type)" class="meal-card">
@@ -19,7 +19,8 @@
                             </mat-card-content>
                             <mat-card-actions class="card-actions">
                                 <div class="button-group">
-                                    <button mat-raised-button class="green-button" (click)="randomizeRecipe(day, type)">Randomize</button>
+                                    <button mat-raised-button class="green-button"
+                                        (click)="randomizeRecipe(day, type)">Randomize</button>
                                     <button mat-button class="btn btn-danger ml-auto">Delete</button>
                                 </div>
                             </mat-card-actions>
@@ -27,10 +28,11 @@
                     </div>
                 </div>
             </ng-container>
-            <!-- Placeholder for Shopping List -->
-            <div>
-                <strong>Shopping List</strong>
-                <!-- Placeholder for Shopping List content -->
+            <div class="shopping-list-column">
+                <h4 class="column-name">Shopping List</h4>
+                <div *ngFor="let item of shoppingList">
+                    <p>{{ item.ingredient.name }}: {{ item.amount }}</p>
+                </div>
             </div>
         </div>
     </div>

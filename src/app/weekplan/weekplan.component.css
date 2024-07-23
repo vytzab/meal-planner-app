@@ -2,6 +2,11 @@
     margin-bottom: 20px;
 }
 
+.shopping-list-column {
+  width: 200px; 
+  margin-bottom: 20px;
+}
+
 .meal-card {
     width: 100%;
     max-width: 300px;
@@ -20,7 +25,7 @@
     flex-wrap: wrap;
 }
 
-.day-name {
+.column-name {
     font-size: 1.5rem;
     font-weight: bold;
 }

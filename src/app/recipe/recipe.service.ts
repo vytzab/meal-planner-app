@@ -51,7 +51,7 @@ export class RecipeService {
           observer.next(recipes[randomIndex]);
           observer.complete();
         } else {
-          observer.next(null); // Handle if no recipes found
+          observer.next(null);
           observer.complete();
         }
       });
