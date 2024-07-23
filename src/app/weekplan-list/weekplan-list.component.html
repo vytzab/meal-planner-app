@@ -1,1 +1,20 @@
-<p>weekplan-list works!</p>
+<div class="container-fluid">
+    <h2 class="text-center">Weekplans</h2>
+    <div class="row">
+        <div *ngFor="let weekplan of weekplans" class="col-md-4 mb-4">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{ weekplan.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ weekplan.week }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>ID: {{ weekplan.id }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" [routerLink]="['../../weekplan/view', weekplan.id]">View
+                        Details</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

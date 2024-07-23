@@ -1,0 +1,11 @@
+.container-fluid {
+    padding: 20px;
+  }
+  
+  .mat-card {
+    cursor: pointer;
+  }
+  
+  .mat-card-header {
+    background-color: #f5f5f5;
+  }
