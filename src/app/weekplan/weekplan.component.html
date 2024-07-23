@@ -1,9 +1,14 @@
 <div class="container-fluid">
-    <div class="row justify-content-center mb-3">
+    <!-- <div class="row justify-content-center mb-3">
         <button mat-raised-button class="btn btn-primary" (click)="randomizeAllMeals()">Randomize All Meals</button>
-    </div>
+    </div> -->
     <div class="d-lg-flex justify-content-center">
         <div class="row text-center justify-content-center">
+            <div class="col-md-12 mb-3">
+                <!-- <h4>Week Plan: {{ weekPlanItem.name }}</h4> -->
+                <!-- <p><strong>Week:</strong> {{ weekPlanItem.week }}</p> -->
+                <p><strong>Start Date:</strong> {{ weekPlanItem.startDate | date }} | <strong>End Date:</strong> {{ weekPlanItem.endDate | date }}</p>
+            </div>
             <!-- Loop through each day -->
             <ng-container *ngFor="let day of [1, 2, 3, 4, 5, 6, 7]">
                 <div class="day-column">
@@ -17,13 +22,13 @@
                                 <mat-card-title>{{ getMealTypeName(type) }}</mat-card-title>
                                 <mat-card-subtitle>{{ getSpecificMeal(day, type)?.name }}</mat-card-subtitle>
                             </mat-card-content>
-                            <mat-card-actions class="card-actions">
+                            <!-- <mat-card-actions class="card-actions">
                                 <div class="button-group">
                                     <button mat-raised-button class="green-button"
                                         (click)="randomizeRecipe(day, type)">Randomize</button>
                                     <button mat-button class="btn btn-danger ml-auto">Delete</button>
                                 </div>
-                            </mat-card-actions>
+                            </mat-card-actions> -->
                         </mat-card>
                     </div>
                 </div>

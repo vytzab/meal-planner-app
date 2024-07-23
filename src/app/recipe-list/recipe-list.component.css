@@ -1,17 +1,17 @@
 .container {
-    padding: 16px;
-  }
-  
-  .action-buttons {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .action-buttons button {
-    margin-right: 10px;
-  }
-  
-  .create-button {
-    margin-left: auto;
-  }
+  padding: 16px;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.action-buttons button {
+  margin-right: 10px;
+}
+
+.create-button {
+  margin-left: auto;
+}

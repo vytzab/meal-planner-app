@@ -19,7 +19,7 @@ export class WeekplanComponent implements OnInit {
   id: string = ''
   weekPlanItem!: Weekplan
   recipes: Recipe[] = [];
-  mealsByDay: { [day: number]: { [type: number]: Recipe } } = {};
+  mealsByDay: { [day: number]: { [type: number]: Recipe | null } } = {};
   recipeItem: Recipe | null = null;
   shoppingList: ShoppingListItem[] = [];
 
@@ -33,7 +33,6 @@ export class WeekplanComponent implements OnInit {
   ngOnInit(): void {
     this.recipeService.getRecipes().subscribe({
       next: (recipes) => {
-        console.log('Recipes fetched:', recipes);
         this.recipes = recipes;
         this.initializeMealsByDay();
         this.fetchWeekPlan();
@@ -142,8 +141,7 @@ export class WeekplanComponent implements OnInit {
         return;
     }
 
-    this.recipeService.getRandomRecipe(isBreakfast, isLunch, isDinner)
-      .subscribe(recipe => {
+    this.recipeService.getRandomRecipe(isBreakfast, isLunch, isDinner).subscribe(recipe => {
         if (recipe) {
           this.recipeItem = recipe;
 

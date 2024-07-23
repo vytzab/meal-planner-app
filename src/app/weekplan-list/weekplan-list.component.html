@@ -1,14 +1,25 @@
 <div class="container-fluid">
-    <h2 class="text-center">Weekplans</h2>
+    <h2 class="text-center">Week Plans</h2>
+  
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <!-- <button mat-raised-button class="light-green" (click)="getRandomMeal(true, false, false)">Get Random Breakfast</button>
+      <button mat-raised-button class="green-button" (click)="getRandomMeal(false, true, false)">Get Random Lunch</button>
+      <button mat-raised-button class="dark-green" (click)="getRandomMeal(false, false, true)">Get Random Dinner</button> -->
+      <button mat-raised-button color="primary" class="btn create-button" [routerLink]="['../../weekplan/new']">Create a New Weekplan</button>
+    </div>
+
     <div class="row">
         <div *ngFor="let weekplan of weekplans" class="col-md-4 mb-4">
             <mat-card>
                 <mat-card-header>
                     <mat-card-title>{{ weekplan.name }}</mat-card-title>
-                    <mat-card-subtitle>{{ weekplan.week }}</mat-card-subtitle>
+                    <mat-card-subtitle><strong>Start Date:</strong> {{ weekplan.startDate | date }} | <strong>End Date:</strong> {{ weekplan.endDate | date }}</mat-card-subtitle>
+                    <!-- <p><strong>Start Date:</strong> {{ weekplan.startDate | date }}</p>
+                    <p><strong>End Date:</strong> {{ weekplan.endDate | date }}</p> -->
                 </mat-card-header>
                 <mat-card-content>
-                    <p>ID: {{ weekplan.id }}</p>
+                    <!-- <p>ID: {{ weekplan.id }}</p> -->
                 </mat-card-content>
                 <mat-card-actions>
                     <button mat-raised-button color="primary" [routerLink]="['../../weekplan/view', weekplan.id]">View
